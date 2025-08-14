@@ -1,6 +1,5 @@
 from utils.ingestaDatos import cargar_compras
 
-
 """
 Módulo principal para la gestión de compras en ZORANY & ANDERSON S.A.S.
 """
