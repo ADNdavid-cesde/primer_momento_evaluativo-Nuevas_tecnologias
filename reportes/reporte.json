@@ -1,0 +1,12 @@
+{
+    "total_ingresos": 12225000,
+    "top_producto_por_ingresos": "laptop",
+    "compras_por_cliente": {
+        "A": 3,
+        "B": 4,
+        "C": 1,
+        "D": 1
+    },
+    "bono": true,
+    "mensaje": "Umbral superado, aplicar descuento corporativo 5% en proxima compra"
+}
