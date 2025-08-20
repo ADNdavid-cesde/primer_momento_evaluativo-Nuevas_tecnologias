@@ -7,6 +7,11 @@
     - Se toma parcialmente el resumen generado.  
 - 17/08/2025 (**ChatGPT**) _Puedes generar el código para este funcionalidad: `...` Puedes ajustar la función `generar_reporte()` para que cree el archivo Json en caso de que no exista._
     - Se toma fragmentos y luego se ajusta los mensajes de las validaciones. 
+   - Se emplean las plantillas tal cual com lo sugiere la IA.
+- 17/08/2025 (**Github Copilot Chat**) _Cual sería la forma adecuada de validar una fecha según el requerimiento de 'fecha con formato YYYY-MM-DD'_.
+    - Se toma strptime(...) de datetime en lugar de un método completo para la validación.
+- 20/08/2025 (**Github Copilot Chat**) _quiero que me generes un docstring para la función estadísticas_.
+    - Se toma parcialmente la documentación sugerida por Copilot.
 
 ## Observaciones
 - Detalles relevantes, problemas encontrados, soluciones aplicadas.
