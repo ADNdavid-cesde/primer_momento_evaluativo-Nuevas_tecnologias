@@ -38,6 +38,23 @@ def cargar_compras(ruta_archivo) -> list:
         return []
 
 def estadisticas(data):
+    """
+    Calcula estadísticas a partir de una lista de compras.
+
+    Args:
+        data (list): Lista de diccionarios, cada uno representa una compra con las claves:
+            - 'cliente' (str):
+            - 'producto' (str):
+            - 'cantidad' (int):
+            - 'precio_unitario' (float): 
+
+    Returns:
+        dict: Diccionario con las siguientes claves:
+            - 'total_ingresos' (float): Suma total de ingresos por todas las compras.
+            - 'top_producto_por_ingresos' (dict): Producto con mayor ingreso total y su valor.
+            - 'compras_por_cliente' (dict): Cantidad total de compras por cada cliente.
+            - 'bono' (bool): True si los ingresos superan 6,000,000, False en caso contrario.
+    """
     total_ingresos = 0
     ingresos_por_producto = {}
     top_producto_por_ingresos = None
@@ -50,17 +67,17 @@ def estadisticas(data):
         precio_unitario = item['precio_unitario']
 
         # Calcular total ingresos
-        total_ingresos += cantidad * precio_unitario
+        total_ingresos += int(cantidad) * float(precio_unitario)
 
         # Calcular ingresos por producto
         if producto not in ingresos_por_producto:
             ingresos_por_producto[producto] = 0
-        ingresos_por_producto[producto] += cantidad * precio_unitario
+        ingresos_por_producto[producto] += int(cantidad) * float(precio_unitario)
 
         # Calcular compras por cliente
         if cliente not in compras_por_cliente:
             compras_por_cliente[cliente] = 0
-        compras_por_cliente[cliente] += cantidad
+        compras_por_cliente[cliente] += int(cantidad)
 
     # Calcular top producto por ingresos
     if ingresos_por_producto:
