@@ -5,3 +5,6 @@ Este proyecto fue desarrollado por:
 
 
 Consiste en un sistema para la gestión de compras de la empresa ZORANY & ANDERSON S.A.S., permitiendo la ingesta y procesamiento de datos de compras desde archivos CSV.
+
+### Git flow
+<img width="816" height="113" alt="image" src="https://github.com/user-attachments/assets/6d01843d-49e5-4bea-83de-8be1940a4484" />
