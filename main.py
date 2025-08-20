@@ -1,28 +1,19 @@
-from utils.utils import estadisticas
+from utils.utils import cargar_compras, estadisticas
+
+"""
+Módulo principal para la gestión de compras en ZORANY & ANDERSON S.A.S.
+"""
 
 def main():
-    data = [
-        {
-            'cliente': 'Juan',
-            'producto': 'Laptop',
-            'cantidad': 2,
-            'precio_unitario': 3500000
-        },
-        {
-            'cliente': 'Ana',
-            'producto': 'Mouse',
-            'cantidad': 5,
-            'precio_unitario': 50000
-        },
-        {
-            'cliente': 'Luis',
-            'producto': 'Teclado',
-            'cantidad': 3,
-            'precio_unitario': 120000
-        }
-    ]
-    resultado = estadisticas(data)
-    print(resultado)
+    print("Bienvenido al sistema de compras ZORANY & ANDERSON S.A.S.")
+    #ruta_archivo = input("Ingrese la ruta del archivo CSV de compras: ")
+    ruta_archivo = 'data/compras.csv'  # Ruta del archivo CSV de compras quemado
+    compras = cargar_compras(ruta_archivo)
+    print(f"Compras cargadas desde: {ruta_archivo}")
+    print(f"Total de compras cargadas: {len(compras)}")
+    resultado = estadisticas(compras)
+    print(f"Resultados de las estadísticas: {resultado}")
+
 
 if __name__ == "__main__":
     main()
