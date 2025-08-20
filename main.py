@@ -1,4 +1,4 @@
-from utils.utils import cargar_compras
+from utils.utils import cargar_compras, estadisticas
 
 """
 Módulo principal para la gestión de compras en ZORANY & ANDERSON S.A.S.
@@ -11,6 +11,9 @@ def main():
     compras = cargar_compras(ruta_archivo)
     print(f"Compras cargadas desde: {ruta_archivo}")
     print(f"Total de compras cargadas: {len(compras)}")
-    
+    resultado = estadisticas(compras)
+    print(f"Resultados de las estadísticas: {resultado}")
+
+
 if __name__ == "__main__":
     main()

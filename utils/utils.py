@@ -36,3 +36,67 @@ def cargar_compras(ruta_archivo) -> list:
     except Exception as e:
         print(f"Error al cargar el archivo: {ruta_archivo}, tipo de error: {type(e)}")
         return []
+
+def estadisticas(data):
+    """
+    Calcula estadísticas a partir de una lista de compras.
+
+    Args:
+        data (list): Lista de diccionarios, cada uno representa una compra con las claves:
+            - 'cliente' (str):
+            - 'producto' (str):
+            - 'cantidad' (int):
+            - 'precio_unitario' (float): 
+
+    Returns:
+        dict: Diccionario con las siguientes claves:
+            - 'total_ingresos' (float): Suma total de ingresos por todas las compras.
+            - 'top_producto_por_ingresos' (dict): Producto con mayor ingreso total y su valor.
+            - 'compras_por_cliente' (dict): Cantidad total de compras por cada cliente.
+            - 'bono' (bool): True si los ingresos superan 6,000,000, False en caso contrario.
+    """
+    total_ingresos = 0
+    ingresos_por_producto = {}
+    top_producto_por_ingresos = None
+    compras_por_cliente = {}
+
+    for item in data:
+        cliente = item['cliente']
+        producto = item['producto']
+        cantidad = item['cantidad']
+        precio_unitario = item['precio_unitario']
+
+        # Calcular total ingresos
+        total_ingresos += int(cantidad) * float(precio_unitario)
+
+        # Calcular ingresos por producto
+        if producto not in ingresos_por_producto:
+            ingresos_por_producto[producto] = 0
+        ingresos_por_producto[producto] += int(cantidad) * float(precio_unitario)
+
+        # Calcular compras por cliente
+        if cliente not in compras_por_cliente:
+            compras_por_cliente[cliente] = 0
+        compras_por_cliente[cliente] += int(cantidad)
+
+    # Calcular top producto por ingresos
+    if ingresos_por_producto:
+        producto_top = max(ingresos_por_producto, key=ingresos_por_producto.get)
+        top_producto_por_ingresos = {
+            'producto': producto_top,
+            'ingreso_total': ingresos_por_producto[producto_top]
+        }
+
+    # Agregar condición de negocio
+    if total_ingresos > 6_000_000:
+        bono = True
+    else:
+        bono = False
+
+    # Retornar resultados
+    return {
+        'total_ingresos': total_ingresos,
+        'top_producto_por_ingresos': top_producto_por_ingresos,
+        'compras_por_cliente': compras_por_cliente,
+        'bono': bono
+    }
